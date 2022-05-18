@@ -1,0 +1,7 @@
+dependencies {
+    implementation project(':theatre-be-main:business-api')
+    implementation project(':theatre-be-main:model')
+
+    implementation "com.github.jmnarloch:modelmapper-spring-boot-starter"
+    implementation "org.springframework.boot:spring-boot-starter-validation"
+}

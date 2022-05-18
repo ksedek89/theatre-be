@@ -97,7 +97,7 @@ configure(allprojects) { project ->
 }
 
 configure(subprojects) { project ->
-    group = "pl.aswit.starter"
+    group = "pl.aswit.theatre"
     version = rootProject.file('version').text.trim()
     sourceCompatibility = JavaVersion.VERSION_17
 

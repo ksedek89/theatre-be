@@ -6,12 +6,16 @@ Linux
 
 ## HOW-TO
 There are few steps to generate project:
-1. **create fork from repository `https://github.com/ksedek89/aswit-be-starter.git`, set project `PORTAL` and name as You wish i.e. `theatre-be`**
 
-1. **clone newly created repository `git clone ssh://git@github.com/ksedek89/theatre-be.git`**
+1. **clone repository `git clone https://github.com/ksedek89/aswit-be-starter.git`**
 
-1. **fulfill config file `run-script/config.properties`**
+2. **mv aswit-be-starter/ {project-name}**
+3. **cd {project-name}**
+4. **fulfill config file `run-script/config.properties`**
 
-1. **run `./run-script/generate.sh`**
+5. **run `./run-script/generate.sh`**
 
-1. **review content of file `banner.txt`, commit change and create pullrequest to develop**
+6. **review content of file `banner.txt`, commit change and create pullrequest to develop**
+7. create repository on github/bitbucket etc.
+8. git init
+9. git remote set-url origin https://github.com/ksedek89/{project-name}.git

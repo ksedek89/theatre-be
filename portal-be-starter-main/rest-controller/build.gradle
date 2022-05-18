@@ -1,0 +1,10 @@
+dependencies {
+    implementation project(':portal-be-starter-main:business-api')
+    implementation project(':portal-be-starter-main:model')
+    implementation project(':portal-be-starter-main:util')
+    implementation project(':portal-be-starter-main:security')
+
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "com.github.jmnarloch:modelmapper-spring-boot-starter"
+    implementation "javax.validation:validation-api"
+}

@@ -1,0 +1,9 @@
+rootProject.name = 'portal-be-starter'
+
+include ':portal-be-starter-main:application'
+include ':portal-be-starter-main:model'
+include ':portal-be-starter-main:util'
+include ':portal-be-starter-main:business-api'
+include ':portal-be-starter-main:business-impl'
+include ':portal-be-starter-main:rest-controller'
+include ':portal-be-starter-main:security'

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <if condition='isDefined("LOGSTASH_URL")'>
+        <then>
+            <appender name="STASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+                <keepAliveDuration>5 minutes</keepAliveDuration>
+                <reconnectionDelay>10 second</reconnectionDelay>
+                <waitStrategyType>blocking</waitStrategyType>
+                <ringBufferSize>16384</ringBufferSize>
+                <destination>${LOGSTASH_URL}</destination>
+                <encoder class="co.elastic.logging.logback.EcsEncoder">
+                    <serviceName>${APP_NAME}</serviceName>
+                    <stackTraceAsArray>false</stackTraceAsArray>
+                    <additionalField>
+                        <key>host.hostname</key>
+                        <value>${HOSTNAME}</value>
+                    </additionalField>
+                    <additionalField>
+                        <key>host.name</key>
+                        <value>${HOSTNAME}</value>
+                    </additionalField>
+                    <additionalField>
+                        <key>service.type</key>
+                        <value>@dockerImageName@</value>
+                    </additionalField>
+                    <additionalField>
+                        <key>service.version</key>
+                        <value>@version@</value>
+                    </additionalField>
+                </encoder>
+            </appender>
+        </then>
+    </if>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <if condition='isDefined("LOGSTASH_URL")'>
+            <then>
+                <appender-ref ref="STASH" />
+            </then>
+        </if>
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

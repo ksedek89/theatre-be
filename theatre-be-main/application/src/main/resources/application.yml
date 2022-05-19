@@ -1,5 +1,5 @@
 server:
-  port: 8085
+  port: 8086
   servlet:
     context-path: /theatre
 management:
@@ -58,11 +58,14 @@ springdoc:
 logging:
   pattern:
     level: "[%X{transaction.id} %X{trace.id}] %5p"
-#  level: # TODO PLACE FEIGN CLIENTS HERE
-#    com:
-#      pru:
-#        cas:
-#          sso:
-#            provider:
-#              pruuser:
-#                PruUserClient: DEBUG
+  level:
+    pl:
+      aswit:
+        theatre:
+          rest:
+            client:
+              RomaClient: DEBUG
+theatre:
+  komedia: true
+  lodz: true
+  roma: true

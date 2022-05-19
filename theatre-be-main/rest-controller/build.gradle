@@ -7,4 +7,11 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-web"
     implementation "com.github.jmnarloch:modelmapper-spring-boot-starter"
     implementation "javax.validation:validation-api"
+
+    implementation "org.springframework.cloud:spring-cloud-starter-openfeign"
+    implementation "io.github.openfeign:feign-httpclient"
+    implementation "io.github.openfeign:feign-okhttp"
+
+    implementation "org.jsoup:jsoup"
+
 }

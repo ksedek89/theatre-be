@@ -13,7 +13,7 @@ public interface TheaterI {
         TheatreDataDto theatreDataDto = TheatreDataDto.builder().playSet(new HashSet<>()).termList(new ArrayList<>()).build();
             int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
             int year = Calendar.getInstance().get(Calendar.YEAR);
-            while (searchTheaterPlays(theatreDataDto, String.valueOf(month), String.valueOf(year))) {
+            while (searchTheaterPlays(theatreDataDto,String.format("%02d", month), String.valueOf(year))) {
                 if (month == 12) {
                     month = 1;
                     year++;
@@ -22,7 +22,8 @@ public interface TheaterI {
                 }
             }
 
-            theatreDataDto.getTermList().forEach(theaterTermDto->{
+
+        theatreDataDto.getTermList().forEach(theaterTermDto->{
                 if(!theatreDataDto.getPlaySet().contains(theaterTermDto.getTheaterPlay())){
                     theatreDataDto.getPlaySet().add(theaterTermDto.getTheaterPlay());
                 }

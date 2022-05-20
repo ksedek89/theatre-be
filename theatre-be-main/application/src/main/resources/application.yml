@@ -66,6 +66,9 @@ logging:
             client:
               RomaClient: DEBUG
 theatre:
-  komedia: true
-  lodz: true
-  roma: true
+  komedia: false
+  lodz: false
+  roma: false
+  6pietro: false
+  ochteatr: true
+  polonia: true

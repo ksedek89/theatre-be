@@ -1,10 +1,11 @@
-package pl.aswit.theatre.rest.client.theatre;
+package pl.aswit.theatre.rest.client.theatre.impl;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 import pl.aswit.theatre.rest.client.RomaClient;
+import pl.aswit.theatre.rest.client.theatre.TheaterI;
 import pl.aswit.theatre.rest.dto.TheaterPlayDto;
 import pl.aswit.theatre.rest.dto.TheaterTermDto;
 import pl.aswit.theatre.rest.dto.TheatreDataDto;

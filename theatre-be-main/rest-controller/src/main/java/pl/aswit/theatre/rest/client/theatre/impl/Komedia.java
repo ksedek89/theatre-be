@@ -1,4 +1,4 @@
-package pl.aswit.theatre.rest.client.theatre;
+package pl.aswit.theatre.rest.client.theatre.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
@@ -7,39 +7,37 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
+import pl.aswit.theatre.rest.client.theatre.TheaterI;
 import pl.aswit.theatre.rest.dto.TheaterPlayDto;
 import pl.aswit.theatre.rest.dto.TheaterTermDto;
 import pl.aswit.theatre.rest.dto.TheatreDataDto;
 
-import java.util.*;
+import java.util.Iterator;
 
 @Service
 @Slf4j
-@ConditionalOnProperty(name = "theatre.lodz", havingValue = "true")
-public class Lodz implements TheaterI {
+@ConditionalOnProperty(name = "theatre.komedia", havingValue = "true")
+public class Komedia implements TheaterI {
 
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
         try {
-            theatreDataDto.setName("Teatr Muzyczny w Łodzi");
-            Document document = Jsoup.connect("https://www.teatr-muzyczny.lodz.pl/repertuar?month=" + month).get();
-            Elements elements = document.select(".single-show-wrapper.active-show");
+            theatreDataDto.setName("Teatr Komedia");
+            Document document = Jsoup.connect("https://teatrkomedia.pl/repertuar").get();
+            Elements elements = document.select(".showWrapper");
             Iterator<Element> iterator = elements.iterator();
-            if (!iterator.hasNext()) {
-                return false;
-            }
             while (iterator.hasNext()) {
                 Element nextElement = iterator.next();
                 TheaterPlayDto theatrePlay = getTheatrePlay(nextElement);
                 theatreDataDto.getTermList().add(TheaterTermDto
                         .builder()
                         .year(year)
-                        .month(month)
-                        .day(nextElement.select(".month-day").get(0).childNodes().get(0).toString())
-                        .hour(nextElement.select(".date").select("span").get(0).childNodes().get(0).toString())
+                        .month(nextElement.select("em").get(0).childNodes().get(0).toString())
+                        .day(nextElement.select("h4").get(0).childNodes().get(0).toString().replace(".", "").trim())
+                        .hour(nextElement.select(".hourWrapper").get(0).childNodes().get(0).toString().replaceAll("\ng.", ""))
                         .theaterPlay(theatrePlay)
                         .build());
             }
-            return true;
+
         }catch(Exception e){
             log.error(e.getMessage(), e);
         }
@@ -49,9 +47,11 @@ public class Lodz implements TheaterI {
     private TheaterPlayDto getTheatrePlay(Element nextElement) {
         return TheaterPlayDto
                 .builder()
-                .name(nextElement.select(".show-name").select("a").get(0).childNodes().get(0).toString().trim())
-                .link(nextElement.select(".show-name").select("a").get(0).attr("href").replaceAll("\\?.*+", ""))
+                .name(nextElement.select(".titleWrapper").select("a").get(0).childNodes().get(0).toString().trim())
+                .link("https://teatrkomedia.pl" + nextElement.select(".titleWrapper").select("a").attr("href"))
                 .build();
     }
+
+
 
 }

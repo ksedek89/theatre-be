@@ -20,7 +20,6 @@ public class TheatreService {
                 .map(TheaterI::searchPerformances)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
-        System.out.println();
         return theatreDataDtoList;
     }
 }

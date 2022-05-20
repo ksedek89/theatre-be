@@ -14,46 +14,44 @@ import pl.aswit.theatre.rest.dto.TheatreDataDto;
 
 import java.util.Iterator;
 
+import static pl.aswit.theatre.util.CalendarUtil.numberOfDays;
+
 @Service
 @Slf4j
-@ConditionalOnProperty(name = "theatre.komedia", havingValue = "true")
-public class Komedia implements TheaterI {
+@ConditionalOnProperty(name = "theatre.capitol", havingValue = "true")
+public class Capitol implements TheaterI {
 
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
         try {
-            theatreDataDto.setName("Teatr Komedia");
-            String url = "https://teatrkomedia.pl/repertuar";
+            theatreDataDto.setName("Teatr Capitol");
+            String url = "https://teatrcapitol.pl/repertuar/?periodFrom="+year+"-"+month+"-01&periodTo="+year+"-"+month+"-"+numberOfDays.get(month);
             log.info(url);
             Document document = Jsoup.connect(url).get();
-            Elements elements = document.select(".showWrapper");
+            Elements elements = document.select(".ev");
             Iterator<Element> iterator = elements.iterator();
+            if (!iterator.hasNext()) {
+                return false;
+            }
             while (iterator.hasNext()) {
                 Element nextElement = iterator.next();
-                TheaterPlayDto theatrePlay = getTheatrePlay(nextElement);
                 theatreDataDto.getTermList().add(TheaterTermDto
                         .builder()
                         .year(year)
-                        .month(nextElement.select("em").get(0).childNodes().get(0).toString())
-                        .day(nextElement.select("h4").get(0).childNodes().get(0).toString().replace(".", "").trim())
-                        .hour(nextElement.select(".hourWrapper").get(0).childNodes().get(0).toString().replaceAll("\ng.", ""))
-                        .theaterPlay(theatrePlay)
+                        .month(month)
+                        .day(nextElement.select("h3").get(0).childNodes().get(0).toString())
+                        .hour(nextElement.select(".ev-hour").get(0).childNodes().get(0).toString())
+                        .theaterPlay(TheaterPlayDto
+                                .builder()
+                                .name(nextElement.select(".main-title").get(0).childNodes().get(0).toString().trim())
+                                .link(nextElement.select(".main-title").attr("href"))
+                                .build())
                         .build());
             }
-
+            return true;
         }catch(Exception e){
             log.error(e.getMessage(), e);
         }
         return false;
     }
-
-    private TheaterPlayDto getTheatrePlay(Element nextElement) {
-        return TheaterPlayDto
-                .builder()
-                .name(nextElement.select(".titleWrapper").select("a").get(0).childNodes().get(0).toString().trim())
-                .link("https://teatrkomedia.pl" + nextElement.select(".titleWrapper").select("a").attr("href"))
-                .build();
-    }
-
-
 
 }

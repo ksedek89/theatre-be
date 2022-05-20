@@ -19,7 +19,9 @@ public abstract class PoloniaOchCommon{
         try {
             theatreDataDto.setName(name);
             String monthTo = Integer.valueOf(month) == 12 ? "01" : String.format("%02d", Integer.valueOf(month)+1);
-            Document document = Jsoup.connect("https://ochteatr.com.pl/pl/content/pl/repertuar?from="+year+"-"+month+"-01T01:00:00Z&to="+year+"-"+monthTo+"-01T01:00:00Z").get();
+            String url = "https://ochteatr.com.pl/pl/content/pl/repertuar?from="+year+"-"+month+"-01T01:00:00Z&to="+year+"-"+monthTo+"-01T01:00:00Z";
+            log.info(url);
+            Document document = Jsoup.connect(url).get();
             Elements elements = document.select("tr");
             Iterator<Element> iterator = elements.iterator();
             if (!iterator.hasNext()) {

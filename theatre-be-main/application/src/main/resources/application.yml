@@ -58,17 +58,20 @@ springdoc:
 logging:
   pattern:
     level: "[%X{transaction.id} %X{trace.id}] %5p"
-  level:
-    pl:
-      aswit:
-        theatre:
-          rest:
-            client:
-              RomaClient: DEBUG
+#  level:
+#    pl:
+#      aswit:
+#        theatre:
+#          rest:
+#            client:
+#              RomaClient: DEBUG
 theatre:
-  komedia: false
-  lodz: false
-  roma: false
-  6pietro: false
+  komedia: true
+  lodz: true
+  roma: true
+  6pietro: true
   ochteatr: true
   polonia: true
+  rampa: true
+  capitol: true
+  buffo: true

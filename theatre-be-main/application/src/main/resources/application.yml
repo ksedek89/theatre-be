@@ -66,12 +66,14 @@ logging:
 #            client:
 #              RomaClient: DEBUG
 theatre:
-  komedia: true
-  lodz: true
-  roma: true
-  6pietro: true
-  ochteatr: true
-  polonia: true
-  rampa: true
-  capitol: true
-  buffo: true
+  komedia: false
+  lodz: false
+  roma: false
+  6pietro: false
+  ochteatr: false
+  polonia: false
+  rampa: false
+  capitol: false
+  buffo: false
+  powszechny: false
+  sabat: false

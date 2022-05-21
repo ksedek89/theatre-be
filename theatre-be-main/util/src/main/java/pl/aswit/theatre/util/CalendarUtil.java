@@ -18,10 +18,28 @@ public class CalendarUtil {
             Map.entry("12", "grudzień")
     );
 
+    public final static Map<String, String> monthMapDeclination = Map.ofEntries(
+            Map.entry("01", "stycznia"),
+            Map.entry("02", "lutego"),
+            Map.entry("03", "marca"),
+            Map.entry("04", "kwietnia"),
+            Map.entry("05", "maja"),
+            Map.entry("06", "czerwca"),
+            Map.entry("07", "lipca"),
+            Map.entry("08", "sierpnia"),
+            Map.entry("09", "września"),
+            Map.entry("10", "października"),
+            Map.entry("11", "listopada"),
+            Map.entry("12", "grudnia")
+    );
+
     public static String getNumberFromName(String name){
         return monthMap.entrySet().stream().filter(e->e.getValue().equalsIgnoreCase(name)).findFirst().get().getKey();
     }
 
+    public static String getNumberFromDeclinationName(String name){
+        return monthMapDeclination.entrySet().stream().filter(e->e.getValue().equalsIgnoreCase(name)).findFirst().get().getKey();
+    }
     public final static Map<String, Integer> numberOfDays = Map.ofEntries(
             Map.entry("01", 31),
             Map.entry("02", 28),

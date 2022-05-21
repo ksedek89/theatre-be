@@ -15,6 +15,6 @@ public class OchTeatr extends PoloniaOchCommon implements TheaterI {
 
     @Override
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
-        return searchTheaterPlays(theatreDataDto, month, year, "Och teatr", ".color-och--link", 1);
+        return searchTheaterPlays(theatreDataDto, month, year, "Och teatr", ".color-och--link", 1, "https://ochteatr.com.pl/pl/content/pl/repertuar");
     }
 }

@@ -15,11 +15,11 @@ import java.util.Iterator;
 @Slf4j
 public abstract class PoloniaOchCommon{
 
-    public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year, String name, String className, int index) {
+    public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year, String name, String className, int index, String urlRequest) {
         try {
             theatreDataDto.setName(name);
             String monthTo = Integer.valueOf(month) == 12 ? "01" : String.format("%02d", Integer.valueOf(month)+1);
-            String url = "https://ochteatr.com.pl/pl/content/pl/repertuar?from="+year+"-"+month+"-01T01:00:00Z&to="+year+"-"+monthTo+"-01T01:00:00Z";
+            String url = urlRequest+"?from="+year+"-"+month+"-01T01:00:00Z&to="+year+"-"+monthTo+"-01T01:00:00Z";
             log.info(url);
             Document document = Jsoup.connect(url).get();
             Elements elements = document.select("tr");

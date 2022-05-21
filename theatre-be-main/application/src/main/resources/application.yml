@@ -80,4 +80,5 @@ theatre:
   narodowy: false
   kwadrat: false
   wielki: false
-  kiepura: true
+  kiepura: false
+  worek-kosci: true

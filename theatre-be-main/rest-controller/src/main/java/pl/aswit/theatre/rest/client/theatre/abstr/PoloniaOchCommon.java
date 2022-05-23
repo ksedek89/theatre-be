@@ -15,7 +15,7 @@ import java.util.Iterator;
 @Slf4j
 public abstract class PoloniaOchCommon{
 
-    public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year, String name, String className, int index, String urlRequest) {
+    public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year, String name, String className, String className1, String urlRequest) {
         try {
             theatreDataDto.setName(name);
             String monthTo = Integer.valueOf(month) == 12 ? "01" : String.format("%02d", Integer.valueOf(month)+1);
@@ -33,13 +33,16 @@ public abstract class PoloniaOchCommon{
                 if(nextElement.select("td").size() == 0){
                     continue;
                 }
-                if(nextElement.select("td").get(index).select(".repertoire__spectacle").size() == 0){
+                if(nextElement.select("td").select(className1).size() == 0){
                     continue;
                 }
-                Elements td = nextElement.select("td").get(index).select(".repertoire__spectacle");
+                Elements td = nextElement.select("td").select(className1);
                 Iterator<Element> elementsIterator = td.iterator();
                 while(elementsIterator.hasNext()){
                     Element next = elementsIterator.next();
+                    if(next.select(className).size() == 0){
+                        continue;
+                    }
                     theatreDataDto.getTermList().add(TheaterTermDto
                             .builder()
                             .year(year)

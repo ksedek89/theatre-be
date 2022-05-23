@@ -23,13 +23,13 @@ public class GoOut {
             Iterator<Element> iterator = elements.iterator();
             while (iterator.hasNext()) {
                 Element nextElement = iterator.next();
-                String time = nextElement.parent().select("time").get(0).childNodes().get(0).toString().replaceAll("\\D", "");
+                String time = nextElement.parent().select("time").get(0).attr("datetime");
                 theatreDataDto.getTermList().add(TheaterTermDto
                         .builder()
-                        .year(time.substring(4,8))
-                        .month(time.substring(2,4))
-                        .day(time.substring(0,2))
-                        .hour(time.substring(8,10)+":"+time.substring(10,12))
+                        .year(time.substring(0,4))
+                        .month(time.substring(5,7))
+                        .day(time.substring(8, 10))
+                        .hour(time.substring(11,16))
                         .theaterPlay(TheaterPlayDto
                                 .builder()
                                 .link("https://goout.net" + nextElement.attr("href"))

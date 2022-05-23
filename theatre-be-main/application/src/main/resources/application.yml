@@ -82,8 +82,8 @@ theatre:
   lodz: false
   roma: false
   6pietro: false
-  ochteatr: false
-  polonia: false
+  ochteatr: true
+  polonia: true
   rampa: false
   capitol: false
   buffo: false
@@ -93,4 +93,4 @@ theatre:
   kwadrat: false
   wielki: false
   kiepura: false
-  worek-kosci: true
+  worek-kosci: false

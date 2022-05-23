@@ -20,6 +20,16 @@ public class TheatreService {
                 .map(TheaterI::searchPerformances)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
+        fixDates(theatreDataDtoList);
+        saveUnsavedPlays(theatreDataDtoList);
         return theatreDataDtoList;
     }
+
+    private void  fixDates(List<TheatreDataDto> theatreDataDtoList){
+        theatreDataDtoList.stream().forEach(e->e.getTermList().stream().forEach(f->f.setDay(String.format("%02d", Integer.valueOf(f.getDay())))));
+    }
+
+    private void saveUnsavedPlays(List<TheatreDataDto> theatreDataDtoList) {
+    }
+
 }

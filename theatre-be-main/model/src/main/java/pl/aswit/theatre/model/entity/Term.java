@@ -18,4 +18,6 @@ public class Term {
     @ManyToOne
     @JoinColumn(name="play_id")
     private Play play;
+    private Timestamp createDate;
+    private boolean newsletterSent;
 }

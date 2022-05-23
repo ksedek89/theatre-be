@@ -1,0 +1,14 @@
+version: "3.0"
+services:
+  aswit-db:
+    image: mariadb:10.6.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: kamie2
+    container_name: aswit-db
+    volumes:
+      - aswit:/data/postgres
+    ports:
+      - "3307:3306"
+volumes:
+  aswit:

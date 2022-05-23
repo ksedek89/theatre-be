@@ -40,6 +40,8 @@ dependencies {
     implementation "io.github.openfeign:feign-httpclient"
     implementation "io.github.openfeign:feign-okhttp"
 
+    implementation "org.mariadb.jdbc:mariadb-java-client"
+
     testImplementation "com.squareup.retrofit2:retrofit"
     testImplementation "com.squareup.retrofit2:converter-jackson"
     testImplementation "com.github.tomakehurst:wiremock-jre8-standalone"

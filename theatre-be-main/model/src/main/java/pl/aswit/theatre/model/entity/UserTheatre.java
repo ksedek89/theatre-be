@@ -24,4 +24,5 @@ public class UserTheatre {
     private User user;
     @ManyToOne
     private Theatre theatre;
+    private Date statusChangeDate;
 }

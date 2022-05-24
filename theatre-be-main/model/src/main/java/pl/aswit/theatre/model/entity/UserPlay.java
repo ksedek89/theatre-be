@@ -24,4 +24,6 @@ public class UserPlay {
     private User user;
     @ManyToOne
     private Play play;
+    private Date statusChangeDate;
+
 }

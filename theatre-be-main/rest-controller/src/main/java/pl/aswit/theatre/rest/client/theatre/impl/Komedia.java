@@ -1,6 +1,7 @@
 package pl.aswit.theatre.rest.client.theatre.impl;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -22,9 +23,10 @@ public class Komedia implements TheaterI {
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
         try {
             theatreDataDto.setName("Teatr Komedia");
-            String url = "https://teatrkomedia.pl/repertuar";
+            String url = "https://teatrkomedia.pl/repertuar/";
             log.info(url);
-            Document document = Jsoup.connect(url).get();
+            Connection connect = Jsoup.connect(url);
+            Document document = connect.get();
             Elements elements = document.select(".showWrapper");
             Iterator<Element> iterator = elements.iterator();
             while (iterator.hasNext()) {
@@ -49,7 +51,7 @@ public class Komedia implements TheaterI {
     private TheaterPlayDto getTheatrePlay(Element nextElement) {
         return TheaterPlayDto
                 .builder()
-                .name(nextElement.select(".titleWrapper").select("a").get(0).childNodes().get(0).toString().trim())
+                .name(nextElement.select(".titleWrapper").select("a").get(0).childNodes().get(0).toString().trim().replaceAll("&nbsp;"," "))
                 .link("https://teatrkomedia.pl" + nextElement.select(".titleWrapper").select("a").attr("href"))
                 .build();
     }

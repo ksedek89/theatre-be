@@ -13,5 +13,6 @@ dependencies {
     implementation "io.github.openfeign:feign-okhttp"
 
     implementation "org.jsoup:jsoup"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
 
 }

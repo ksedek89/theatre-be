@@ -4,4 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import pl.aswit.theatre.model.entity.Play;
 
 public interface PlayRepository extends JpaRepository<Play, Integer> {
+    Play findByName(String name);
 }

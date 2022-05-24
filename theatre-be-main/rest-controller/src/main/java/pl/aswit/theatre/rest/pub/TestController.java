@@ -16,7 +16,7 @@ public class TestController {
     private TheatreService theatreService;
 
     @GetMapping
-    public List<TheatreDataDto> test() {
-        return theatreService.search();
+    public List<TheatreDataDto> searchNewPerformances() {
+        return theatreService.searchNewPerformances();
     }
 }

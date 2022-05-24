@@ -44,7 +44,7 @@ public class Kiepura implements TheaterI {
                         .hour(date.replaceAll("\\D", "").substring(6, 8)+":" + date.replaceAll("\\D", "").substring(8,10))
                         .theaterPlay(TheaterPlayDto
                                 .builder()
-                                .link("https://www.mteatr.pl/pl" + nextElement.select("a").attr("href"))
+                                .link("https://www.mteatr.pl" + nextElement.select("a").attr("href"))
                                 .name(nextElement.select(".box_tytul").get(0).select("h2").get(0).childNodes().get(0).toString())
                                 .build())
                         .build());

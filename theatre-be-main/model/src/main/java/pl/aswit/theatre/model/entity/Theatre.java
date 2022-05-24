@@ -18,6 +18,7 @@ public class Theatre {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany(mappedBy="theatre")
-    private List<Play> playList;
+    @OneToMany(mappedBy = "theatre")
+    private List<UserTheatre> userTheatreList;
+
 }

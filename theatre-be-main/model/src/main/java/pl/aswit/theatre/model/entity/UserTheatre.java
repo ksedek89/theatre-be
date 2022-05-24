@@ -15,20 +15,13 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Play {
+public class UserTheatre {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String link;
-    @OneToMany(mappedBy="play")
-    private List<Term> termList;
+    private Boolean active;
     @ManyToOne
-    @JoinColumn(name="theatre_id")
+    private User user;
+    @ManyToOne
     private Theatre theatre;
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createDate;
-    @OneToMany(mappedBy = "play")
-    private List<UserPlay> userPlayList;
 }

@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class ConfigTheatreRequestDto {
     private String theatreCode;
-    private boolean theatreValue;
+    private Boolean theatreValue;
 }

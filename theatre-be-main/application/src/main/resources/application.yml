@@ -79,18 +79,18 @@ logging:
 #              RomaClient: DEBUG
 theatre:
   komedia: true
-  lodz: true
-  roma: true
-  6pietro: true
-  ochteatr: true
-  polonia: true
-  rampa: true
-  capitol: true
-  buffo: true
-  powszechny: true
-  sabat: true
-  narodowy: true
-  kwadrat: true
-  wielki: true
-  kiepura: true
-  worek-kosci: true
+  lodz: false
+  roma: false
+  6pietro: false
+  ochteatr: false
+  polonia: false
+  rampa: false
+  capitol: false
+  buffo: false
+  powszechny: false
+  sabat: false
+  narodowy: false
+  kwadrat: false
+  wielki: false
+  kiepura: false
+  worek-kosci: false

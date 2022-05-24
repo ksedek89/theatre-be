@@ -8,7 +8,6 @@ import pl.aswit.theatre.rest.dto.register.general.GeneralResponseDto;
 import pl.aswit.theatre.rest.dto.register.response.RegisterUserResponseDto;
 import pl.aswit.theatre.rest.services.NotificationService;
 
-import javax.validation.Valid;
 
 
 @RestController

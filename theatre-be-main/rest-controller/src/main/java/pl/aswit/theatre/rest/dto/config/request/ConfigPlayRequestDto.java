@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class ConfigPlayRequestDto {
     private String playName;
-    private boolean playValue;
+    private Boolean playValue;
 }

@@ -1,15 +1,13 @@
 package pl.aswit.theatre.config.apm;
 
-import java.util.Map;
-
-import javax.annotation.PostConstruct;
-
+import co.elastic.apm.attach.ElasticApmAttacher;
+import lombok.Setter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-import co.elastic.apm.attach.ElasticApmAttacher;
-import lombok.Setter;
+import javax.annotation.PostConstruct;
+import java.util.Map;
 
 @Setter
 @Configuration

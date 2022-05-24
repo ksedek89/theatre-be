@@ -12,7 +12,7 @@ import pl.aswit.theatre.rest.dto.TheaterPlayDto;
 import pl.aswit.theatre.rest.dto.TheaterTermDto;
 import pl.aswit.theatre.rest.dto.TheatreDataDto;
 
-import java.util.*;
+import java.util.Iterator;
 
 @Service
 @Slf4j

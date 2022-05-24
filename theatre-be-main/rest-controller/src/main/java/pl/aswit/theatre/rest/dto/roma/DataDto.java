@@ -1,6 +1,5 @@
 package pl.aswit.theatre.rest.dto.roma;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 @Data

@@ -2,7 +2,6 @@ package pl.aswit.theatre.config.log;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import pl.aswit.theatre.config.filter.RequestAndResponseLoggingFilter;
 
 @Configuration

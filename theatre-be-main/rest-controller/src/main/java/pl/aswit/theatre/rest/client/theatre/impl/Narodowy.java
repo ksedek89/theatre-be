@@ -14,8 +14,6 @@ import pl.aswit.theatre.rest.dto.TheatreDataDto;
 
 import java.util.Iterator;
 
-import static pl.aswit.theatre.util.CalendarUtil.numberOfDays;
-
 @Service
 @Slf4j
 @ConditionalOnProperty(name = "theatre.narodowy", havingValue = "true")

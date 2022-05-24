@@ -1,9 +1,9 @@
 package pl.aswit.theatre.e2e.version
 
 import com.fasterxml.jackson.core.type.TypeReference
-import pl.aswit.theatre.rest.model.version.VersionResponse
 import pl.aswit.theatre.e2e.clients.VersionRestApiClient
 import pl.aswit.theatre.e2e.config.RestApiTestBase
+import pl.aswit.theatre.rest.model.version.VersionResponse
 
 class VersionRestApiTest extends RestApiTestBase<VersionRestApiClient> {
     def "@getVersion"() {

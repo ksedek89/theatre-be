@@ -2,7 +2,6 @@ package pl.aswit.theatre.rest.services;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.aswit.theatre.model.entity.Play;
 import pl.aswit.theatre.model.entity.Term;
@@ -14,7 +13,10 @@ import pl.aswit.theatre.rest.client.theatre.TheaterI;
 import pl.aswit.theatre.rest.dto.TheaterTermDto;
 import pl.aswit.theatre.rest.dto.TheatreDataDto;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor

@@ -1,14 +1,12 @@
 package pl.aswit.theatre.rest.prv;
 
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import pl.aswit.theatre.business.version.VersionService;
 import pl.aswit.theatre.rest.model.version.VersionResponse;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController("VersionControllerPrv")

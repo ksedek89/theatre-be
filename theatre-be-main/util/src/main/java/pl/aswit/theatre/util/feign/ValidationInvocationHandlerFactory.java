@@ -1,17 +1,16 @@
 package pl.aswit.theatre.util.feign;
 
+import feign.InvocationHandlerFactory;
+import feign.Target;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import javax.validation.Validator;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Map;
 import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
-import javax.validation.Validator;
-
-import feign.InvocationHandlerFactory;
-import feign.Target;
 
 public class ValidationInvocationHandlerFactory implements InvocationHandlerFactory {
 

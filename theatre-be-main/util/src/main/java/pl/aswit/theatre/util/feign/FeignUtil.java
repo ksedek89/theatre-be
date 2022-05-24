@@ -1,9 +1,10 @@
 package pl.aswit.theatre.util.feign;
 
-import java.util.concurrent.TimeUnit;
-
-import javax.validation.Validation;
-
+import feign.*;
+import feign.codec.Decoder;
+import feign.codec.Encoder;
+import feign.codec.ErrorDecoder;
+import lombok.val;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.cloud.openfeign.support.PageableSpringEncoder;
@@ -11,18 +12,10 @@ import org.springframework.cloud.openfeign.support.ResponseEntityDecoder;
 import org.springframework.cloud.openfeign.support.SpringDecoder;
 import org.springframework.cloud.openfeign.support.SpringEncoder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-
-import feign.Client;
-import feign.Feign;
-import feign.InvocationHandlerFactory;
-import feign.Logger;
-import feign.Request;
-import feign.Retryer;
-import feign.codec.Decoder;
-import feign.codec.Encoder;
-import feign.codec.ErrorDecoder;
-import lombok.val;
 import pl.aswit.theatre.util.json.JacksonUtil;
+
+import javax.validation.Validation;
+import java.util.concurrent.TimeUnit;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 

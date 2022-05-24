@@ -1,19 +1,16 @@
 package pl.aswit.theatre.util.feign;
 
-import java.io.IOException;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import feign.Request;
 import feign.Response;
 import feign.Util;
 import feign.slf4j.Slf4jLogger;
 import lombok.val;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import static feign.Util.UTF_8;
-import static feign.Util.decodeOrDefault;
-import static feign.Util.valuesOrEmpty;
+import java.io.IOException;
+
+import static feign.Util.*;
 
 public class FeignLogger extends Slf4jLogger {
 

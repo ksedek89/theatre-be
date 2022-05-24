@@ -1,11 +1,9 @@
 package pl.aswit.theatre.business.version;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 import pl.aswit.theatre.model.version.VersionDto;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service

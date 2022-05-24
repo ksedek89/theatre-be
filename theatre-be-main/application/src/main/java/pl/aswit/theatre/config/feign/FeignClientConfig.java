@@ -7,6 +7,7 @@ import feign.codec.Decoder;
 import feign.codec.Encoder;
 import feign.slf4j.Slf4jLogger;
 import lombok.val;
+import okhttp3.OkHttpClient;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
@@ -15,8 +16,6 @@ import org.springframework.cloud.openfeign.support.SpringDecoder;
 import org.springframework.cloud.openfeign.support.SpringEncoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import okhttp3.OkHttpClient;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import pl.aswit.theatre.rest.client.RomaClient;
 

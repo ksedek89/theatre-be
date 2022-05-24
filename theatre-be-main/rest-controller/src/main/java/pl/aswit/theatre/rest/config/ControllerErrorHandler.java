@@ -1,19 +1,17 @@
 package pl.aswit.theatre.rest.config;
 
-import javax.validation.ConstraintViolationException;
-
+import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 import pl.aswit.theatre.model.error.ErrorCode;
 import pl.aswit.theatre.rest.config.model.ErrorResponse;
 
-import lombok.extern.slf4j.Slf4j;
-import lombok.val;
+import javax.validation.ConstraintViolationException;
 
 import static pl.aswit.theatre.model.error.ErrorCode.GENERIC_ERROR_CODE;
 import static pl.aswit.theatre.model.error.ErrorCode.VALIDATION_ERROR_CODE;

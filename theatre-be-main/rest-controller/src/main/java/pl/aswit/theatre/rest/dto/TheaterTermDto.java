@@ -3,8 +3,6 @@ package pl.aswit.theatre.rest.dto;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.Objects;
-
 @Builder
 @Data
 public class TheaterTermDto {

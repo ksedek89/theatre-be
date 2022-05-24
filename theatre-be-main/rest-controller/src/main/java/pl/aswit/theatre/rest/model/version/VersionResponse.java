@@ -1,8 +1,8 @@
 package pl.aswit.theatre.rest.model.version;
 
-import javax.validation.constraints.NotEmpty;
-
 import lombok.Data;
+
+import javax.validation.constraints.NotEmpty;
 
 @Data
 public class VersionResponse {

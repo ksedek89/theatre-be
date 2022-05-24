@@ -25,6 +25,7 @@ public class Powszechny implements TheaterI {
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
         try {
             theatreDataDto.setName("Teatr Powszechny");
+            theatreDataDto.setCode("POWSZECHNY");
             String url = "https://www.powszechny.com/index/repertuar.html";
             log.info(url);
             Document document = Jsoup.connect(url).get();

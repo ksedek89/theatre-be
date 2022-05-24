@@ -25,6 +25,7 @@ public class Rampa implements TheaterI {
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
         try {
             theatreDataDto.setName("Teatr Rampa");
+            theatreDataDto.setCode("RAMPA");
             String url = "https://www.teatr-rampa.pl/repertuar?month=" + year + "-" + month;
             log.info(url);
             Document document = Jsoup.connect(url).get();

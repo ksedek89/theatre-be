@@ -25,6 +25,7 @@ public class Kiepura implements TheaterI {
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
         try {
             theatreDataDto.setName("Mazowiecki Teatr Muzyczny im. Jana Kiepury");
+            theatreDataDto.setCode("KIEPURA");
             String url = "https://www.mteatr.pl/pl/repertuar";
             log.info(url);
             Document document = Jsoup.connect(url).get();

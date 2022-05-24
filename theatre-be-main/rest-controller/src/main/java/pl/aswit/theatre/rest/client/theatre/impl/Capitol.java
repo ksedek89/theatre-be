@@ -24,6 +24,7 @@ public class Capitol implements TheaterI {
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
         try {
             theatreDataDto.setName("Teatr Capitol");
+            theatreDataDto.setCode("CAPITOL");
             String url = "https://teatrcapitol.pl/repertuar/?periodFrom="+year+"-"+month+"-01&periodTo="+year+"-"+month+"-"+numberOfDays.get(month);
             log.info(url);
             Document document = Jsoup.connect(url).get();

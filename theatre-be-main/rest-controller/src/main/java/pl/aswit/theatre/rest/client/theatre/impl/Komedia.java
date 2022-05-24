@@ -23,6 +23,7 @@ public class Komedia implements TheaterI {
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
         try {
             theatreDataDto.setName("Teatr Komedia");
+            theatreDataDto.setCode("KOMEDIA");
             String url = "https://teatrkomedia.pl/repertuar/";
             log.info(url);
             Connection connect = Jsoup.connect(url);

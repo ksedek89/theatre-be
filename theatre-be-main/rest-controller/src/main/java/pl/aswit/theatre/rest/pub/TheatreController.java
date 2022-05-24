@@ -10,12 +10,12 @@ import pl.aswit.theatre.rest.services.TheatreService;
 import java.util.List;
 
 @RestController
-@RequestMapping("${pru.servlet.pub-api-path}/test")
+@RequestMapping("${pru.servlet.pub-api-path}/theatre")
 @AllArgsConstructor
-public class TestController {
+public class TheatreController {
     private TheatreService theatreService;
 
-    @GetMapping
+    @GetMapping("/find-new")
     public List<TheatreDataDto> searchNewPerformances() {
         return theatreService.searchNewPerformances();
     }

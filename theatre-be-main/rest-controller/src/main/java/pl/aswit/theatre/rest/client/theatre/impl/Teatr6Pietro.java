@@ -22,6 +22,7 @@ public class Teatr6Pietro implements TheaterI {
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
         try {
             theatreDataDto.setName("Teatr 6.piętro");
+            theatreDataDto.setCode("6PIETRO");
             String url = "https://bilety.teatr6pietro.pl/index.html?date="+year+"-"+month+"-01";
             log.info(url);
             Document document = Jsoup.connect(url).get();

@@ -25,6 +25,6 @@ public class WorekKosci extends GoOut implements TheaterI {
 
     @Override
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
-        return addGoOut(theatreDataDto, "Worek kości", "https://goout.net/pl/worek-kosci/vzevpc/");
+        return addGoOut(theatreDataDto, "Worek kości", "WOREK_KOSCI", "https://goout.net/pl/worek-kosci/vzevpc/");
     }
 }

@@ -24,6 +24,7 @@ public class Kwadrat implements TheaterI {
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
         try {
             theatreDataDto.setName("Teatr Kwadrat");
+            theatreDataDto.setCode("KWADRAT");
             String url = "https://bilety.teatrkwadrat.pl/?direction=down&&month="+month+"&year="+year;
             log.info(url);
             Document document = Jsoup.connect(url).get();

@@ -22,6 +22,7 @@ public class Lodz implements TheaterI {
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
         try {
             theatreDataDto.setName("Teatr Muzyczny w Łodzi");
+            theatreDataDto.setCode("TEATR_MUZYCZNY_LODZ");
             String url = "https://www.teatr-muzyczny.lodz.pl/repertuar?month=" + month;
             log.info(url);
             Document document = Jsoup.connect(url).get();

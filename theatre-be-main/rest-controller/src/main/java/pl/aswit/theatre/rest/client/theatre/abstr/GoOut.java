@@ -14,9 +14,10 @@ import java.util.Iterator;
 @Slf4j
 public class GoOut {
 
-    public boolean addGoOut(TheatreDataDto theatreDataDto, String name, String url) {
+    public boolean addGoOut(TheatreDataDto theatreDataDto, String name, String code, String url) {
         try {
             theatreDataDto.setName(name);
+            theatreDataDto.setCode(code);
             log.info(url);
             Document document = Jsoup.connect(url).get();
             Elements elements = document.select(".eventCard-name-link");

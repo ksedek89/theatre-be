@@ -24,6 +24,7 @@ public class Narodowy implements TheaterI {
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
         try {
             theatreDataDto.setName("Teatr Narodowy");
+            theatreDataDto.setCode("NARODOWY");
             String url = "https://narodowy.pl/repertuar,kalendarium.html?month="+month+"&year="+year;
             log.info(url);
             Document document = Jsoup.connect(url).get();

@@ -6,4 +6,5 @@ import pl.aswit.theatre.model.entity.Theatre;
 
 public interface TheatreRepository extends JpaRepository<Theatre, Long> {
     Theatre findByName(String name);
+    Theatre findByCode(String name);
 }

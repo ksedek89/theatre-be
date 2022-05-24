@@ -73,9 +73,9 @@ public class TheatreService {
 
     private void saveNewTheatres(List<TheatreDataDto> theatreDataDtoList) {
         theatreDataDtoList.stream().forEach(e->{
-            Theatre theatre = theatreRepository.findByName(e.getName());
+            Theatre theatre = theatreRepository.findByCode(e.getCode());
             if(theatre == null){
-                Theatre addedTheatre  = theatreRepository.save(Theatre.builder().name(e.getName()).build());
+                Theatre addedTheatre  = theatreRepository.save(Theatre.builder().name(e.getName()).code(e.getCode()).build());
                 log.info("Added theatre: " + addedTheatre);
             }
         });

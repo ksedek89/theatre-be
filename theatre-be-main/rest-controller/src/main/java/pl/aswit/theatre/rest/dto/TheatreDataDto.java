@@ -10,6 +10,7 @@ import java.util.Set;
 @Builder
 public class TheatreDataDto {
     private String name;
+    private String code;
     private List<TheaterTermDto> termList;
     private Set<TheaterPlayDto> playSet;
 }

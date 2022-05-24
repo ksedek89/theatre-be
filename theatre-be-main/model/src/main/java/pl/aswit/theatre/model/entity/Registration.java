@@ -15,21 +15,16 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Registration {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String surname;
+    private String uuid;
     private Boolean active;
-    private String email;
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
-    @OneToMany(mappedBy = "user")
-    private List<UserPlay> userPlayList;
-    @OneToMany(mappedBy = "user")
-    private List<UserTheatre> userTheatreList;
-    @OneToMany(mappedBy="user")
-    private List<Registration> registrationList;
 }

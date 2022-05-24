@@ -25,6 +25,7 @@ public class Roma implements TheaterI {
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
         try{
             theatreDataDto.setName("Teatr Roma");
+            theatreDataDto.setCode("ROMA");
             String url = year + "-" + month + "-01";
             log.info("https://bilety.teatrroma.pl/rezerwacja/termin.html?json=true&jsonType=terminy&od=" + url);
             RomaResponseDto repertoire = romaClient.getRepertoire(url);

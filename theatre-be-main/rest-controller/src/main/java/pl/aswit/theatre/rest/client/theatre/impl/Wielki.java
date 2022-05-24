@@ -22,6 +22,7 @@ public class Wielki implements TheaterI {
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
         try {
             theatreDataDto.setName("Teatr Wielki Opera Narodowa");
+            theatreDataDto.setCode("WIELKI");
             String url = "https://teatrwielki.pl/repertuar/kalendarium/data/"+year+"/"+month+"/";
             log.info(url);
             Document document = Jsoup.connect(url).get();

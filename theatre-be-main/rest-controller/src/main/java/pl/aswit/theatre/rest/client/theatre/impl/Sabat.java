@@ -25,6 +25,7 @@ public class Sabat implements TheaterI {
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
         try {
             theatreDataDto.setName("Teatr Sabat");
+            theatreDataDto.setCode("SABAT");
             String url = "https://www.teatr-sabat.pl/pl/repertuar";
             log.info(url);
             Document document = Jsoup.connect(url).get();

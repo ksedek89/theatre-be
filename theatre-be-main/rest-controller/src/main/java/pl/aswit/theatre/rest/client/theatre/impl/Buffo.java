@@ -25,6 +25,7 @@ public class Buffo implements TheaterI {
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
         try {
             theatreDataDto.setName("Studio Buffo");
+            theatreDataDto.setCode("BUFFO");
             String url = "https://studiobuffo.com.pl/repertuar";
             log.info(url);
             Document document = Jsoup.connect(url).get();

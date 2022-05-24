@@ -15,9 +15,10 @@ import java.util.Iterator;
 @Slf4j
 public abstract class PoloniaOchCommon{
 
-    public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year, String name, String className, String className1, String urlRequest) {
+    public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year, String name, String code, String className, String className1, String urlRequest) {
         try {
             theatreDataDto.setName(name);
+            theatreDataDto.setCode(code);
             String monthTo = Integer.valueOf(month) == 12 ? "01" : String.format("%02d", Integer.valueOf(month)+1);
             String url = urlRequest+"?from="+year+"-"+month+"-01T01:00:00Z&to="+year+"-"+monthTo+"-01T01:00:00Z";
             log.info(url);

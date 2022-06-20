@@ -25,4 +25,9 @@ public class NotificationController {
     public GeneralResponseDto<RegisterUserResponseDto> updateUserPlayPreferences(@PathVariable("email") String email, @RequestBody ConfigPlayMainRequestDto configTheatreMainRequestDto) {
         return notificationService.updateUserPlayPreferences(email, configTheatreMainRequestDto);
     }
+
+    @PostMapping("/{email}/send")
+    public GeneralResponseDto sendNewsletter(@PathVariable("email") String email){
+        return notificationService.sendNewsletter(email);
+    }
 }

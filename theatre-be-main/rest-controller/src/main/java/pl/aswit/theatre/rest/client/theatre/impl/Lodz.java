@@ -1,6 +1,7 @@
 package pl.aswit.theatre.rest.client.theatre.impl;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -33,14 +34,17 @@ public class Lodz implements TheaterI {
             }
             while (iterator.hasNext()) {
                 Element nextElement = iterator.next();
-                TheaterPlayDto theatrePlay = getTheatrePlay(nextElement);
                 theatreDataDto.getTermList().add(TheaterTermDto
                         .builder()
                         .year(year)
                         .month(month)
                         .day(nextElement.select(".month-day").get(0).childNodes().get(0).toString())
                         .hour(nextElement.select(".date").select("span").get(0).childNodes().get(0).toString())
-                        .theaterPlay(theatrePlay)
+                        .theaterPlay(TheaterPlayDto
+                                .builder()
+                                .name(nextElement.select(".show-name").select("a").get(0).childNodes().get(0).toString().trim())
+                                .link(nextElement.select(".show-name").select("a").get(0).attr("href").replaceAll("\\?.*+", ""))
+                                .build())
                         .build());
             }
             return true;
@@ -50,12 +54,24 @@ public class Lodz implements TheaterI {
         return false;
     }
 
-    private TheaterPlayDto getTheatrePlay(Element nextElement) {
-        return TheaterPlayDto
-                .builder()
-                .name(nextElement.select(".show-name").select("a").get(0).childNodes().get(0).toString().trim())
-                .link(nextElement.select(".show-name").select("a").get(0).attr("href").replaceAll("\\?.*+", ""))
-                .build();
+    @Override
+    public String addDescriptions(String link) {
+        try {
+            log.info(link);
+            Connection connect = Jsoup.connect(link);
+            Document document = connect.get();
+            Iterator<Element> p = document.select(".rtejustify").iterator();
+            StringBuilder sb = new StringBuilder();
+            while (p.hasNext()) {
+                Element next = p.next();
+                sb.append(next.childNodes().get(0).toString()).append(" ");
+            }
+
+            return sb.toString();
+        }catch (Exception e){
+            log.error(e.getMessage(), e);
+        }
+        return null;
     }
 
 }

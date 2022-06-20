@@ -10,6 +10,7 @@ import java.util.Objects;
 public class TheaterPlayDto {
     private String name;
     private String link;
+    private String description;
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

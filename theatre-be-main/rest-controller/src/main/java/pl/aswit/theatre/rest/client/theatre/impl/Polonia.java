@@ -16,4 +16,14 @@ public class Polonia extends PoloniaOchCommon implements TheaterI {
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
         return searchTheaterPlays(theatreDataDto, month, year, "Teatr Polonia", "POLONIA", ".color-polonia", ".repertoire__spectacle--red", "https://teatrpolonia.pl/pl/content/pl/repertuar");
     }
+
+    @Override
+    public String addDescriptions(String link) {
+        return addDescriptionsCommon(link);
+    }
+
+    @Override
+    public String addDescriptionsCommon(String link) {
+        return super.addDescriptionsCommon(link);
+    }
 }

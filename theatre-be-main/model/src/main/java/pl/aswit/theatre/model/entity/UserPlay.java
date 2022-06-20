@@ -17,12 +17,12 @@ public class UserPlay {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-    private Boolean active;
+    private boolean active;
     @ManyToOne
     private User user;
     @ManyToOne
     private Play play;
     private Date statusChangeDate;
-    private Boolean notificationSent;
+    private boolean notificationSent;
 
 }

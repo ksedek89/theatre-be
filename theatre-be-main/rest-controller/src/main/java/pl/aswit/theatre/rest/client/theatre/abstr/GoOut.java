@@ -1,6 +1,7 @@
 package pl.aswit.theatre.rest.client.theatre.abstr;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -42,5 +43,17 @@ public class GoOut {
             log.error(e.getMessage(), e);
         }
         return false;
+    }
+
+    public String setDescriptions(String link) {
+        try {
+            log.info(link);
+            Connection connect = Jsoup.connect(link);
+            Document document = connect.get();
+            return document.select(".textAboutItem").text();
+        }catch (Exception e){
+            log.error(e.getMessage(), e);
+        }
+        return null;
     }
 }

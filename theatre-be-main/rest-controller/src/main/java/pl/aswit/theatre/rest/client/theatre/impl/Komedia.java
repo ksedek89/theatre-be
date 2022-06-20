@@ -52,10 +52,32 @@ public class Komedia implements TheaterI {
     private TheaterPlayDto getTheatrePlay(Element nextElement) {
         return TheaterPlayDto
                 .builder()
-                .name(nextElement.select(".titleWrapper").select("a").get(0).childNodes().get(0).toString().trim().replaceAll("&nbsp;"," "))
+                .name(nextElement.select(".titleWrapper").select("a").get(0).childNodes().get(0).toString().trim().replace("&nbsp;"," "))
                 .link("https://teatrkomedia.pl" + nextElement.select(".titleWrapper").select("a").attr("href"))
                 .build();
     }
+
+    public String addDescriptions(String link){
+        try {
+            log.info(link);
+            Connection connect = Jsoup.connect(link);
+            Document document = connect.get();
+            Element element = document.select(".generic").get(0);
+            Iterator<Element> p = element.select("p").iterator();
+            StringBuilder sb = new StringBuilder();
+            while (p.hasNext()) {
+                Element next = p.next();
+                sb.append(next.childNodes().get(0).toString().replace("&nbsp;", " ")).append(" ");
+            }
+
+            return sb.toString();
+        }catch (Exception e){
+            log.error(e.getMessage(), e);
+        }
+        return null;
+
+    }
+
 
 
 

@@ -2,6 +2,7 @@ package pl.aswit.theatre.rest.client.theatre.abstr;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -67,6 +68,25 @@ public abstract class PoloniaOchCommon{
             log.error(e.getMessage(), e);
         }
         return false;
+    }
+
+    public String addDescriptionsCommon(String link) {
+        try {
+            log.info(link);
+            Connection connect = Jsoup.connect(link);
+            Document document = connect.get();
+            Iterator<Element> p = document.select(".event__details").get(0).select("div").iterator();
+            StringBuilder sb = new StringBuilder();
+            while (p.hasNext()) {
+                Element next = p.next();
+                sb.append(next.text().trim()).append(" ");
+            }
+
+            return sb.toString();
+        }catch (Exception e){
+            log.error(e.getMessage(), e);
+        }
+        return null;
     }
 
 

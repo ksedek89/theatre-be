@@ -2,6 +2,10 @@ package pl.aswit.theatre.rest.client.theatre.impl;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 import pl.aswit.theatre.rest.client.RomaClient;
@@ -11,10 +15,7 @@ import pl.aswit.theatre.rest.dto.TheaterTermDto;
 import pl.aswit.theatre.rest.dto.TheatreDataDto;
 import pl.aswit.theatre.rest.dto.roma.RomaResponseDto;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -54,13 +55,34 @@ public class Roma implements TheaterI {
         return false;
     }
 
+    @Override
+    public String addDescriptions(String link) {
+        try {
+            log.info(link);
+            Connection connect = Jsoup.connect(link);
+            Document document = connect.get();
+            Iterator<Element> p = document.select(".text-size.font-dosis").get(0).select("p").iterator();
+            StringBuilder sb = new StringBuilder();
+            while (p.hasNext()) {
+                Element next = p.next();
+                sb.append(next.text()).append(" ");
+            }
+
+            return sb.toString();
+        }catch (Exception e){
+            log.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
     private TheaterTermDto prepareTheterTermList(LinkedHashMap e) {
-                return TheaterTermDto
+        String termData = e.get("termin_data").toString();
+        return TheaterTermDto
                         .builder()
                         .hour((String)e.get("godzina"))
-                        .day(e.get("termin_data").toString().substring(8, 10))
-                        .month(e.get("termin_data").toString().substring(5, 7))
-                        .year(e.get("termin_data").toString().substring(0, 4))
+                        .day(termData.substring(8, 10))
+                        .month(termData.substring(5, 7))
+                        .year(termData.substring(0, 4))
                         .theaterPlay(TheaterPlayDto
                                 .builder()
                                 .name((String)e.get("nazwa"))

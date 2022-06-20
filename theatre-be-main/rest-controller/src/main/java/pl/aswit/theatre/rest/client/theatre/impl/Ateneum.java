@@ -15,52 +15,39 @@ import pl.aswit.theatre.rest.dto.TheatreDataDto;
 
 import java.util.Iterator;
 
-import static pl.aswit.theatre.util.CalendarUtil.getNumberFromName;
-
 @Service
 @Slf4j
-@ConditionalOnProperty(name = "theatre.kwadrat", havingValue = "true")
-public class Kwadrat implements TheaterI {
+@ConditionalOnProperty(name = "theatre.ateneum", havingValue = "true")
+public class Ateneum implements TheaterI {
 
     public boolean searchTheaterPlays(TheatreDataDto theatreDataDto, String month, String year) {
         try {
-            theatreDataDto.setName("Teatr Kwadrat");
-            theatreDataDto.setCode("KWADRAT");
-            String url = "https://bilety.teatrkwadrat.pl/?direction=down&&month="+month+"&year="+year;
+            theatreDataDto.setName("Teatr Ateneum");
+            theatreDataDto.setCode("ATENEUM");
+            String url = "https://teatrateneum.pl/?page_id=26579&data=" + year+"-"+month+"-01";
             log.info(url);
             Document document = Jsoup.connect(url).get();
-
-            if(!getNumberFromName(document.select(".month").get(0).childNodes().get(0).toString().replaceAll("\\d", "").trim()).equals(month)){
-                return false;
-            }
-            Elements elements = document.select(".spektakl-scena");
+            Elements elements = document.select(".spektakl");
             Iterator<Element> iterator = elements.iterator();
             if (!iterator.hasNext()) {
                 return false;
             }
-            int element = 0;
             while (iterator.hasNext()) {
                 Element nextElement = iterator.next();
-                if(nextElement.select("span").size() == 0){
-                    continue;
-                }
-                element++;
                 theatreDataDto.getTermList().add(TheaterTermDto
                         .builder()
                         .year(year)
                         .month(month)
-                        .day(nextElement.parent().child(0).select(".dzien-mies").get(0).childNodes().get(0).toString().replaceAll("\\n", ""))
-                        .hour(nextElement.select("span").get(0).childNodes().get(0).toString())
+                        .day(nextElement.parent().select(".text-left").get(0).childNodes().get(0).toString().trim())
+                        .hour(nextElement.select(".spektakl-godzina").get(0).childNodes().get(0).toString().replace("\n", "").trim())
                         .theaterPlay(TheaterPlayDto
                                 .builder()
-                                .name(nextElement.select("a").get(0).childNodes().get(0).toString())
-                                .link(nextElement.select("a").attr("href"))
+                                .name(nextElement.select("h2").get(0).childNodes().get(0).toString())
+                                .link(nextElement.select(".tytul-spektaklu").get(0).attr("href"))
                                 .build())
                         .build());
             }
-            if(element>0){
-                return true;
-            }
+            return true;
         }catch(Exception e){
             log.error(e.getMessage(), e);
         }
@@ -73,7 +60,7 @@ public class Kwadrat implements TheaterI {
             log.info(link);
             Connection connect = Jsoup.connect(link);
             Document document = connect.get();
-            return document.select(".entry-content").select(".e2").get(0).text();
+            return document.select(".threecol-two").text();
         }catch (Exception e){
             log.error(e.getMessage(), e);
         }

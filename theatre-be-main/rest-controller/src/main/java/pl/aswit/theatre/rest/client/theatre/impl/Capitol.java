@@ -1,6 +1,7 @@
 package pl.aswit.theatre.rest.client.theatre.impl;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -54,5 +55,19 @@ public class Capitol implements TheaterI {
         }
         return false;
     }
+
+    @Override
+    public String addDescriptions(String link) {
+        try {
+            log.info(link);
+            Connection connect = Jsoup.connect(link);
+            Document document = connect.get();
+            return document.select(".main_content").get(0).text();
+        }catch (Exception e){
+            log.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
 
 }

@@ -71,9 +71,9 @@ public class NotificationService {
             List<UserPlay> userPlayList= userPlayRepository.findAllByUser(e);
             List<UserPlayDto> userPlayDtoList = new ArrayList();
             userPlayList.stream().forEach(f->{
-                if(f.getActive()
+                if(f.isActive()
                         && f.getStatusChangeDate().compareTo(e.getCreateDate()) < 1
-                        && (f.getNotificationSent() == null || !f.getNotificationSent())){
+                        && !f.isNotificationSent()){
                     Play play = f.getPlay();
                     userPlayDtoList.add(UserPlayDto.builder().link(play.getLink()).name(play.getLink()).build());
                     f.setNotificationSent(true);
@@ -87,8 +87,14 @@ public class NotificationService {
     }
 
     private void sendNotification(User user, List<UserPlayDto> userPlayDtoList) {
-        System.out.println();
-        System.out.println(userPlayDtoList);
+        log.info(user.toString());
+        log.info(userPlayDtoList.toString());
         //send mail
+    }
+
+    public GeneralResponseDto sendNewsletter(String email) {
+        List<Play> allPlays = playRepository.findAll();
+
+        return GeneralResponseDto.builder().build();
     }
 }

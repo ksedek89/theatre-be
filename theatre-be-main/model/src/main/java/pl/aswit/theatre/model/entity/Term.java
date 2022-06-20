@@ -26,4 +26,6 @@ public class Term {
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
+
+
 }

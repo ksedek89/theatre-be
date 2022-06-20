@@ -1,6 +1,7 @@
 package pl.aswit.theatre.rest.client.theatre.impl;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -42,6 +43,19 @@ public class Narodowy implements TheaterI {
             log.error(e.getMessage(), e);
         }
         return false;
+    }
+
+    @Override
+    public String addDescriptions(String link) {
+        try {
+            log.info(link);
+            Connection connect = Jsoup.connect(link);
+            Document document = connect.get();
+            return document.select("#content").text();
+        }catch (Exception e){
+            log.error(e.getMessage(), e);
+        }
+        return null;
     }
 
     private void prepareListForScene(TheatreDataDto theatreDataDto, String month, String year, Element nextElement, String scene) {
